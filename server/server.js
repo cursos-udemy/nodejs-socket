@@ -19,8 +19,13 @@ io.on('connection', (client) => {
         console.log('El usuario se desconecto');
     });
 
-    client.on('login', (data) => {
-        console.log(`Bienvenido ${data.username}`);
+    client.on('login', (data, callback) => {
+        if (data.username) {
+            console.log(`El usuario ${data.username} ingreso a al aplicacion`);
+            callback(`Bienvenido ${data.username}`);
+        } else {
+            callback(`Por favor ingrese sus credenciales`);
+        }
     });
 });
 

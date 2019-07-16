@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WebSocket</title>
+    <link href="https://fonts.googleapis.com/css?family=Bahianita&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: gray; font-family: 'Montserrat', sans-serif;">
+    <h1>Programa de Colas</h1>
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        socket.on ('connect', function () {
+            console.log('conectandose con el servidor via socket ...');
+        });
+        socket.on('established-connection', function (data) {
+            console.log('CLIENT->established-connection: ', data);
+        });
+        
+        socket.on('disconnect', function () {
+            console.log('perdimos conexion con el servidor');
+        });
+        socket.emit('login', {
+            username: 'gwfernandez',
+        })
+
+    </script>
+</body>
+</html>
